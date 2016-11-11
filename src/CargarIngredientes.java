@@ -11,8 +11,6 @@ public class CargarIngredientes {
     private FileReader fileReader;
     private FileWriter fileWriter;
 
-
-
     public String getFilepath() {
         return filepath;
     }
