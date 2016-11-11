@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 /**
  * Created by ANGELUS on 09/11/16.
+ * Clase encargada de llenar las botellas y verificar la cantidad de los ingredientes para llenar las botellas
  */
 public class Maquina {
 
@@ -11,10 +12,18 @@ public class Maquina {
     private CargarIngredientes cargarIngredientes;
     private Scanner scan;
 
-
+    /**
+     * Variable que ejemplifica la bande transportadora de botellas
+     */
     public LinkedList<Botella> bandaBotellas;
+    /**
+     * Hilo que detiene el programa por 5 segundos
+     */
     public Thread tiempocreacion;
 
+    /**
+     * Constructor de la maquina se encarga de hechar a andar todas las funciones de la mquina
+     */
     public Maquina(){
         bandaBotellas=new LinkedList<>();
         tiempocreacion=new Thread();
@@ -23,17 +32,26 @@ public class Maquina {
         iniciar();
     }
 
+    /**
+     * Metodo encargado de iniciar la maquina leyendo el archivo de ingredientes
+     */
     public void iniciar(){
         cantidadIngredientes=cargarIngredientes.leerIngrediente();
         if(cantidadIngredientes<0 || cantidadIngredientes==0)
             System.out.println("No hay suficientes Ingredientes Recargar ingredientes");
     }
 
+    /**
+     * Metodo encargado de llenar las botellas en caso de haber suficiente ingredientes para llenar
+     * las botellas causara una excepcion del tipo cargar botella
+     * @param numeroBotellas int
+     * @throws ExcepcionLlenarBotella Exception
+     */
+
     public void llenarBotellas(int numeroBotellas) throws ExcepcionLlenarBotella {
         int contador=1;
         System.out.println("Espere un momento Llenando Botellas...");
         do{
-
 
         int canntIngr=cantidadIngredientes-Botella.CANTIDAD_BOTELLA;
 
@@ -63,6 +81,10 @@ public class Maquina {
 
     }
 
+    /**
+     * Metodo encargado de mostrar el estado de la maquina e indicar el estado de la maquina
+     */
+
     public void displayMaquina(){
         int numbotellas=0;
         do {
@@ -83,6 +105,10 @@ public class Maquina {
         }while (numbotellas!=-1);
     }
 
+    /**
+     * Metodo encargado de leer un entero.
+     * @return int
+     */
     public int leerInt(){
         try{
             return scan.nextInt();
@@ -92,6 +118,10 @@ public class Maquina {
         }
     }
 
+    /**
+     * Metodo encargado de leer una cadena de texto n
+     * @return String
+     */
     public String leerString(){
         try{
             return scan.next();
