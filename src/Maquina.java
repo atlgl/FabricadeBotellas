@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -19,17 +18,20 @@ public class Maquina {
     public Maquina(){
         bandaBotellas=new LinkedList<>();
         tiempocreacion=new Thread();
-        cargarIngredientes=new CargarIngredientes("Ingredientes.txt");
+        cargarIngredientes=new CargarIngredientes("ingre.txt");
         scan=new Scanner(System.in);
         iniciar();
     }
 
     public void iniciar(){
         cantidadIngredientes=cargarIngredientes.leerIngrediente();
+        if(cantidadIngredientes<0 || cantidadIngredientes==0)
+            System.out.println("No hay suficientes Ingredientes Recargar ingredientes");
     }
 
     public void llenarBotellas(int numeroBotellas) throws ExcepcionLlenarBotella {
         int contador=1;
+        System.out.println("Espere un momento Llenando Botellas...");
         do{
 
 
@@ -39,10 +41,12 @@ public class Maquina {
             Botella b=new Botella(Botella.CANTIDAD_BOTELLA);
             cantidadIngredientes=cantidadIngredientes-Botella.CANTIDAD_BOTELLA;
             bandaBotellas.add(b);
-            contador++;
+
             try{
-                tiempocreacion.sleep(5000);
+                tiempocreacion.sleep(500);
                 System.out.println("Botella.........................."+contador);
+                cargarIngredientes.guardaIngrediente(cantidadIngredientes);
+                contador++;
             }catch (Exception ex){
                 ex.printStackTrace();
             }
@@ -50,26 +54,33 @@ public class Maquina {
         }else{
             System.out.println("Falta Ingredientes para llenar mas Botellas"+cantidadIngredientes);
             numeroBotellas=-1;
+            cargarIngredientes.cerrarIngredientes();
             throw  new ExcepcionLlenarBotella("Falta Ingredientes para llenar botella");
 
         }
         }while (numeroBotellas>0);
-
+        cargarIngredientes.cerrarIngredientes();
 
     }
 
     public void displayMaquina(){
+        int numbotellas=0;
+        do {
 
-        System.out.println("----Display Estado de la maquina----------------------");
-        System.out.println("Cantidad actual de ingredientes:"+cantidadIngredientes);
-        System.out.println("------------------------------------------------------");
-        System.out.println("Cuantas botellas desea llenar:\n");
-        int numbotellas=leerInt();
-        try {
-            llenarBotellas(numbotellas);
-        }catch (ExcepcionLlenarBotella ex){
-            ex.printStackTrace();
-        }
+            System.out.println("----Display Estado de la maquina----------------------");
+            System.out.println("----Para Salir presione -1");
+            System.out.println("Cantidad actual de ingredientes:" + cantidadIngredientes);
+            System.out.println("------------------------------------------------------");
+            System.out.println("Cuantas botellas desea llenar:\n");
+            numbotellas = leerInt();
+            if(numbotellas!=-1) {
+                try {
+                    llenarBotellas(numbotellas);
+                } catch (ExcepcionLlenarBotella ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }while (numbotellas!=-1);
     }
 
     public int leerInt(){
