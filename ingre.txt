@@ -83,3 +83,18 @@ ingrediente:300,fecha:Fri Nov 11 16:47:11 CST 2016
 ingrediente:200,fecha:Fri Nov 11 16:47:12 CST 2016
 ingrediente:100,fecha:Fri Nov 11 16:47:12 CST 2016
 ingrediente:0,fecha:Fri Nov 11 16:47:13 CST 2016
+ingrediente:1300,fecha:Fri Nov 11 16:47:13 CST 2016
+
+ingrediente:1200,fecha:Fri Nov 11 23:37:28 CST 2016
+ingrediente:1100,fecha:Fri Nov 11 23:37:28 CST 2016
+ingrediente:1000,fecha:Fri Nov 11 23:37:29 CST 2016
+ingrediente:900,fecha:Fri Nov 11 23:37:29 CST 2016
+ingrediente:800,fecha:Fri Nov 11 23:37:30 CST 2016
+ingrediente:700,fecha:Fri Nov 11 23:37:30 CST 2016
+ingrediente:600,fecha:Fri Nov 11 23:37:31 CST 2016
+ingrediente:500,fecha:Fri Nov 11 23:37:31 CST 2016
+ingrediente:400,fecha:Fri Nov 11 23:37:32 CST 2016
+ingrediente:300,fecha:Fri Nov 11 23:37:32 CST 2016
+ingrediente:200,fecha:Fri Nov 11 23:39:08 CST 2016
+ingrediente:100,fecha:Fri Nov 11 23:39:09 CST 2016
+ingrediente:0,fecha:Fri Nov 11 23:39:09 CST 2016
